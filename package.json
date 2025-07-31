@@ -1,0 +1,16 @@
+{
+    "name": "startup-planet",
+    "version": "1.0.0",
+    "description": "An API for the most popular up and coming startups",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "author": "Robert Lam",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^5.1.0"
+    }
+}
