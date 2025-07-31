@@ -47,4 +47,21 @@ app.get('/api', (req, res) => {
     res.json(filteredData);
 });
 
+app.get('/api/:field/:term', (req, res) => {
+    const { field, term } = req.params;
+    const allowedFields = ['country', 'continent', 'industry'];
+    let filteredData = startups;
+    if (!allowedFields.includes(field)) {
+        return res.status(400).json({
+            // needs to be returned, .json can't be run twice. so the below .json will not execute
+            message:
+                "Search field not allowed. Please use only 'country', 'continent', 'industry'",
+        });
+    }
+    filteredData = filteredData.filter(
+        (startup) => startup[field].toLowerCase() === term.toLowerCase()
+    );
+    res.json(filteredData);
+});
+
 app.listen(PORT, () => console.log(`server connected on port ${PORT}`));
